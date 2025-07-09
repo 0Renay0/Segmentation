@@ -15,3 +15,10 @@ thresholds = compute_thresholds(X, x_cols, k)
 # Segmentation du signal
 segments, rupture_logs, transition_points = segment_signal(t, X, x_cols, thresholds, MinPoints)
 
+# Sauvegarde des segments
+save_segments(segments, x_cols, segment_folder)
+
+# Sauvegarde des points de transition
+save_transition_points(transition_points, segment_folder)
+
+

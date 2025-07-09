@@ -26,7 +26,7 @@ def compute_thresholds(X, x_cols, k=1.0):
         
     return thresholds
 
-def segment_signal(t, X, x_cols, thresholds, MinPoints=3):
+def segment_signal(t, X, x_cols, thresholds, MinPoints=50):
     """
     Segmente le signal en détectant les ruptures.
     """
@@ -67,24 +67,40 @@ def segment_signal(t, X, x_cols, thresholds, MinPoints=3):
                 }
                 break
             
-            if rupture_detected:
-                if len(current_t) >= MinPoints:
-                    # On sauvegarde le dernier point avant la rupture
-                    transition_points.append({
-                        "time": t[i-1],
-                        "variable": rupture_info["variable"],
-                        "value": X[i-1, x_cols.index(rupture_info["variable"])]
-                    })
-                    segments.append((np.array(current_t), np.array(current_X)))
-                    rupture_logs.append(rupture_info)
-                    current_t = [t[i-1], t[i]]
-                    current_X = [X[i-1], X[i]]
-                else:
-                    # Trop court : on fusionne avec le prochain segment
-                    current_t.append(t[i])
-                    current_X.append(X[i])
+        if rupture_detected:
+            if len(current_t) >= MinPoints:
+                # On sauvegarde le dernier point avant la rupture
+                transition_points.append({
+                    "time": t[i-1],
+                    "variable": rupture_info["variable"],
+                    "value": X[i-1, x_cols.index(rupture_info["variable"])]
+                })
+                segments.append((np.array(current_t), np.array(current_X)))
+                rupture_logs.append(rupture_info)
+                current_t = [t[i-1], t[i]]
+                current_X = [X[i-1], X[i]]
             else:
+                # Trop court : on fusionne avec le prochain segment
                 current_t.append(t[i])
                 current_X.append(X[i])
+        else:
+            current_t.append(t[i])
+            current_X.append(X[i])
     segments.append((np.array(current_t), np.array(current_X)))
     return segments, rupture_logs, transition_points
+
+
+def save_segments(segments, x_cols, folder):
+    os.makedirs(folder, exist_ok=True)
+    for i, (t_segment, X_segment) in enumerate(segments):
+        seg_df = pd.DataFrame({'Time': t_segment})
+        for j, col in enumerate(x_cols):
+            seg_df[col] = X_segment[:, j]
+        seg_df.to_csv(os.path.join(folder, f'segment_{i+1}.csv'), index=False)
+        print(f"[Seg_Results] Segment {i+1} sauvegardé dans '{folder}/segment_{i+1}.csv' avec {len(t_segment)} points.")
+        
+def save_transition_points(transition_points, folder):
+    os.makedirs(folder, exist_ok=True)
+    transition_df = pd.DataFrame(transition_points)
+    transition_df.to_csv(os.path.join(folder, 'transition_points.csv'), index=False)
+    print(f"[Trans_Results] {len(transition_points)} points de transition sauvegardés dans '{folder}/transition_points.csv'.")
