@@ -104,3 +104,19 @@ def save_transition_points(transition_points, folder):
     transition_df = pd.DataFrame(transition_points)
     transition_df.to_csv(os.path.join(folder, 'transition_points.csv'), index=False)
     print(f"[Trans_Results] {len(transition_points)} points de transition sauvegardés dans '{folder}/transition_points.csv'.")
+    
+
+def logs(rupture_logs):
+    """
+    Affiche les logs des ruptures détectées.
+    """
+    
+    print("\n=== Logs des ruptures ===")
+    for log in rupture_logs:
+        a = log["a"]
+        b = log["b"]
+        t_val = log["time"]
+        print(f"- Segment {log['segment_index']:>2} : à t = {t_val:.4f} --> variable '{log['variable']}'")
+        print(f"  Equation de la droite : y = {a:.4f} * t + {b:.4f}")
+        print(f"  Erreur = {log['error']:.4f} | Seuil = {log['threshold']:.4f}\n")
+        

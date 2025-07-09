@@ -21,4 +21,5 @@ save_segments(segments, x_cols, segment_folder)
 # Sauvegarde des points de transition
 save_transition_points(transition_points, segment_folder)
 
-
+# Logs des ruptures
+logs(rupture_logs)
