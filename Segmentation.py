@@ -2,7 +2,7 @@ from Sources import *
 
 # Paramètres
 input_file = "Data/Q4_mode_degradation.csv"
-segment_folder = "segments_from_csv"
+segment_folder = "Results"
 k = 1.0  # Facteur de tolérance
 MinPoints = 50  # Nombre minimum de points pour considérer un segment valide
 
