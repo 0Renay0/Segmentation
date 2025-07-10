@@ -70,11 +70,19 @@ def segment_signal(t, X, x_cols, thresholds, MinPoints=50):
         if rupture_detected:
             if len(current_t) >= MinPoints:
                 # On sauvegarde le dernier point avant la rupture
-                transition_points.append({
+                
+                # On sauvegarde les données de la variable de rupture
+                """ transition_points.append({
                     "time": t[i-1],
                     "variable": rupture_info["variable"],
                     "value": X[i-1, x_cols.index(rupture_info["variable"])]
-                })
+                }) """
+                # On sauvegarde les données de transition de toutes les variables
+                point_data = {"time": t[i-1]}
+                for j, col in enumerate(x_cols):
+                    point_data[col] = X[i-1, j]
+                transition_points.append(point_data)
+
                 segments.append((np.array(current_t), np.array(current_X)))
                 rupture_logs.append(rupture_info)
                 current_t = [t[i-1], t[i]]
