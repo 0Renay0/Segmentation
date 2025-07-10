@@ -120,3 +120,22 @@ def logs(rupture_logs):
         print(f"  Equation de la droite : y = {a:.4f} * t + {b:.4f}")
         print(f"  Erreur = {log['error']:.4f} | Seuil = {log['threshold']:.4f}\n")
         
+
+def plot_segments(segments, x_cols):
+    """
+    Affiche les segments détectés.
+    """
+    plt.figure(figsize=(12, 6))
+    colors = plt.cm.tab10(np.linspace(0, 1, len(segments)))
+
+    for d, col in enumerate(x_cols):
+        plt.subplot(len(x_cols), 1, d+1)
+        for i, (seg_t, seg_X) in enumerate(segments):
+            plt.plot(seg_t, seg_X[:, d], color=colors[i], label=f"Seg {i+1}")
+        plt.ylabel(col)
+        plt.grid()
+
+    plt.xlabel("Temps")
+    plt.suptitle("Segmentation multivariée (seuils dynamiques par variable)")
+    plt.tight_layout()
+    plt.show()

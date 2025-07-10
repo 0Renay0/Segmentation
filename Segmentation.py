@@ -23,3 +23,6 @@ save_transition_points(transition_points, segment_folder)
 
 # Logs des ruptures
 logs(rupture_logs)
+
+# Affichage 
+plot_segments(segments, x_cols)
