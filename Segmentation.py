@@ -1,4 +1,9 @@
-from Sources import *
+from Sources import (load_data,  # type: ignore
+                     compute_thresholds, 
+                     segment_signal, 
+                     save_segments, 
+                     save_transition_points, 
+                     logs, plot_segments) 
 
 # Paramètres
 input_file = "Data/Q4_mode_degradation.csv"
