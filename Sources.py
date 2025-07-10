@@ -144,6 +144,6 @@ def plot_segments(segments, x_cols):
         plt.grid()
 
     plt.xlabel("Temps")
-    plt.suptitle("Segmentation multivariée (seuils dynamiques par variable)")
+    plt.suptitle("Segmentation multivariée")
     plt.tight_layout()
     plt.show()
