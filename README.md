@@ -16,8 +16,10 @@ Ce projet a pour objectif de **segmenter des séries temporelles multivariées**
 
 ### 1. **Chargement des données**
 Les données doivent être au format CSV avec la structure suivante:
-|    Time   |    Var1   |    Var2   |    Var3   |    ....   |
-|--- 0.00   |:-: 12.3   |:-: 45.6  |:-: 1.55   |--: ....   |
-|   0.01    |   12.4    |    45.7   |   1.6    |  ....     |
-|    .   |    .   |   .    |   .    |    ....   |
-|   1000    |   x    |    y   |   z    |   ....    |
+
+|   Time    |   Var1    |   Var2    |   Var3    |   ...     |
+|   :---:   |   :---:   |   :---:   |   :---:   |   :---:   |
+|   0.00    |   12.3    |   45.6    |   1.55    |   ...     |
+|   0.01    |   12.4    |   45.7    |   1.6     |   ...     |
+|   ...     |   ...     |   ...     |   ...     |   ...     |
+|   1000    |   ...     |   ...     |   ...     |   ...     |
