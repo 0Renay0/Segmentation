@@ -6,10 +6,10 @@ from Sources import (load_data,  # type: ignore
                      logs, plot_segments) 
 
 # Paramètres
-input_file = "Data/engine_timing.csv"
-segment_folder = "Engine_Timing_Results"
-k = 1.0  # Facteur de tolérance
-MinPoints = 50  # Nombre minimum de points pour considérer un segment valide
+input_file = "Data/Q4_mode_degradation1.csv"
+segment_folder = "Results"
+k = 1e-3  # Facteur de tolérance
+MinPoints = 100  # Nombre minimum de points pour considérer un segment valide
 
 # Chargement des données
 t, x_cols, X = load_data(input_file)
