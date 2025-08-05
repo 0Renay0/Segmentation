@@ -6,16 +6,20 @@ from Sources import (
     save_transition_points,
     logs,
     plot_segments,
+    plot_raw_data,
 )
 
 # Paramètres
-input_file = "Data/Q4_mode_degradation1.csv"
+input_file = "Data/engine_timing.csv"
 segment_folder = "Results"
-k = 1e-3  # Facteur de tolérance
+k = 1  # Facteur de tolérance
 MinPoints = 100  # Nombre minimum de points pour considérer un segment valide
 
 # Chargement des données
 t, x_cols, X = load_data(input_file)
+
+# Affichage des données brutes
+plot_raw_data(t, X, x_cols)
 
 # Calcil des seuils
 thresholds = compute_thresholds(X, x_cols, k)

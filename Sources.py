@@ -157,3 +157,22 @@ def plot_segments(segments, x_cols):
     plt.suptitle("Segmentation multivariée")
     plt.tight_layout()
     plt.show()
+
+
+def plot_raw_data(t, X, x_cols, title="Données brutes avant segmentation"):
+    """
+    Affiche les données brutes avant la segmentation.
+    """
+    plt.figure(figsize=(12, 6))
+
+    for d, col in enumerate(x_cols):
+        plt.subplot(len(x_cols), 1, d + 1)
+        plt.plot(t, X[:, d], label=col)
+        plt.ylabel(col)
+        plt.grid()
+        plt.legend(loc="upper right")
+
+    plt.xlabel("Temps")
+    plt.suptitle(title)
+    plt.tight_layout()
+    plt.show()
