@@ -61,6 +61,11 @@ Paramètres choisis par défaut:
 - **Visualisation**:
 Dans cette section, on illustre la méthode implementé par une application sur des données issues d'un moteur.
 
+### Données brutes
+![Série temporelle brute](Engine_Timing_Results/DonnéesBrutes.png)
+
+### Données segmentées
+![Série temporelle segmentée](Engine_Timing_Results/DonnéesSegmentés.png)
 
 
 ---
