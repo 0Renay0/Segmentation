@@ -10,9 +10,9 @@ from Sources import (
 )
 
 # Paramètres
-input_file = "Data/engine_timing.csv"
+input_file = "Data/Sin.csv"
 segment_folder = "Results"
-k = 1  # Facteur de tolérance
+k = 0.5  # Facteur de tolérance
 MinPoints = 100  # Nombre minimum de points pour considérer un segment valide
 
 # Chargement des données
