@@ -58,7 +58,7 @@ Paramètres choisis par défaut:
 - ...
 ```
 
-- **Visualisation**:
+## **Visualisation**:
 Dans cette section, on illustre la méthode implementé par une application sur des données issues d'un moteur.
 
 ### Données brutes
@@ -67,5 +67,5 @@ Dans cette section, on illustre la méthode implementé par une application sur 
 ### Données segmentées
 ![Série temporelle segmentée](Engine_Timing_Results/DonnéesSegmentés.png)
 
-
+L'objectif de la segmentation est illutré par les differentes couleurs des segments où on a un segment à chaque fois qu'on détecte une rupture.
 ---
