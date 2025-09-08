@@ -59,7 +59,8 @@ Paramètres choisis par défaut:
 ```
 
 - **Visualisation**:
-Afficher les séries temporelles segmentées.
-TODO: ajouter une image d'ulistration
+Dans cette section, on illustre la méthode implementé par une application sur des données issues d'un moteur.
+
+
 
 ---
